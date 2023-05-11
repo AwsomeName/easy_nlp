@@ -1,29 +1,10 @@
 # 旨在零基础的入门
-from transformers import GPT2Tokenizer,  GPT2LMHeadModel
 from transformers import TextDataset, DataCollatorForLanguageModeling
 from transformers import Trainer, TrainingArguments
-from datasets import load_dataset
-import transformers
+from transformers import AutoModelForCausalLM, AutoTokenizer
 from loguru import logger
 import argparse
-import sys
-
-assert(
-    "LlamaTokenizer" in transformers._import_structure["models.llama"]
-), "need llama"
-from transformers import LlamaForCausalLM, LlamaTokenizer
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from peft import (
-    prepare_model_for_int8_training,
-    LoraConfig,
-    get_peft_model,
-    get_peft_model_state_dict,
-    set_peft_model_state_dict
-)
-import os
 import torch
-from transformers.trainer import TRAINING_ARGS_NAME
-
 
 def train_or_pred():
     logger.info(args)
@@ -69,7 +50,7 @@ def train_or_pred():
     )
     
     logger.info("Trainer...")
-    if True:
+    if args.do_train:
         trainer = Trainer(
             model=model,
             args=training_args,
@@ -90,6 +71,37 @@ def train_or_pred():
         tokenizer.save_pretrained(args.output_dir)
         
         logger.info("Traing succeeded")
+    elif args.do_predict:
+        # nlp = pipeline("text-generation", model=model, tokenizer=tokenizer)
+        text = "你好吗？今天天气不错"
+        max_length = 1024
+        chosen_token = tokenizer(
+            text,
+            max_length=max_length,
+            padding="max_length",
+            truncation=True,
+            return_tensors="pt"
+        )
+        
+        input_ids = torch.tensor(chosen_token["input_ids"]).cuda()
+        attention_mask = torch.tensor(chosen_token['attention_mask']).cuda()
+        checkpoint_path = args.output_dir + "checkpoint-100/pytorch_model.bin"
+        checkpoint = torch.load(checkpoint_path)
+        print("checkpoint:", checkpoint)
+        model.load_state_dict(checkpoint)
+        model.eval()
+        
+        outputs = model.generate(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            max_length=200,
+            do_sample=True,
+            top_k = 5,
+            top_p=0.95,
+            num_return_sequences=1)
+        
+        output = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        print("".join(output))
         
         
 if __name__ == "__main__":
@@ -111,12 +123,4 @@ if __name__ == "__main__":
     parser.add_argument("--resume_from_checkpoint", action="store_true", default=False)
     args = parser.parse_args()
     train_or_pred()
-    
-    
-    
-    
-    
-    
-    
-    
     
