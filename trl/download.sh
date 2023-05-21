@@ -1,5 +1,6 @@
 mkdir ./data
-python download_dataset.py
+mkdir -p ./model/bloom-560
+python download.py
 
 # mkdir ./model
 # cd model
