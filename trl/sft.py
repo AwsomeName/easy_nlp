@@ -1,4 +1,4 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, BloomTokenizerFast
 from transformers import Trainer, TrainingArguments
 from datasets import load_dataset
 import transformers
@@ -61,7 +61,9 @@ def train_or_pred(
         return tokenized_full_prompt
     
     logger.info(args)
+    # tokenizer = AutoTokenizer.from_pretrained("bigscience/bloom-560m", padding_side="left")
     tokenizer = AutoTokenizer.from_pretrained(args.pre_train, padding_side="left")
+    # tokenizer = BloomTokenizerFast.from_pretrained(args.pre_train, padding_side="left")
     tokenizer.pad_token = tokenizer.eos_token
     
     model = AutoModelForCausalLM.from_pretrained(args.pre_train).cuda()
@@ -130,8 +132,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--train_file", default="data/train.json", type=str)
     parser.add_argument("--test_file", default="data/dev.json", type=str)
-    # parser.add_argument("--model_type", default="gpt2", type=str)
-    parser.add_argument("--model_name", default="bigscience/bloom-560m", type=str)
+    # parser.add_argument("--pre_train", default="model/bloom-560m", type=str)
     parser.add_argument("--pre_train", default="bigscience/bloom-560m", type=str)
     parser.add_argument("--do_train", action="store_true")
     parser.add_argument("--do_predict", action="store_true")
