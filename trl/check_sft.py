@@ -1,11 +1,12 @@
 from transformers import BloomTokenizerFast, BloomForCausalLM, pipeline
 import torch
 
-model_path = "./outputs/checkpoint-2200"
-tokenizer = BloomTokenizerFast.from_pretrained(model_path)
+model_path = "/root/easy_nlp/trl/outputs/sft/checkpoint-2200"
+# tokenizer = BloomTokenizerFast.from_pretrained(model_path)
+tokenizer = BloomTokenizerFast.from_pretrained("bigscience/bloom-560m")
 tokenizer.pad_token = tokenizer.eos_token
 
-model = BloomForCausalLM.from_pretrained(model_path)).cuda()
+model = BloomForCausalLM.from_pretrained(model_path).cuda()
 model.eval()
 
 def gen_res(model, tokenizer, ipstr):
@@ -35,7 +36,7 @@ def gen_res(model, tokenizer, ipstr):
 
 with open("./data/dev.json", 'r') as fp, open("./generate.txt", 'a') as wp:
     for line in fp.readlines():
-        line = lins.strip()
+        line = line.strip()
         info = eval(line)
         input_text = info['instruct']
         res_text = gen_res(model, tokenizer, input_text)
