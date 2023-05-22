@@ -1,12 +1,14 @@
 from transformers import BloomTokenizerFast, BloomForCausalLM, pipeline
 import torch
+import json
 
-model_path = "/root/easy_nlp/trl/outputs/sft/checkpoint-2200"
+model_path = "/root/easy_nlp/trl/outputs/sft/checkpoint-2600"
 # tokenizer = BloomTokenizerFast.from_pretrained(model_path)
 tokenizer = BloomTokenizerFast.from_pretrained("bigscience/bloom-560m")
 tokenizer.pad_token = tokenizer.eos_token
 
-model = BloomForCausalLM.from_pretrained(model_path).cuda()
+# model = BloomForCausalLM.from_pretrained(model_path).cuda()
+model = BloomForCausalLM.from_pretrained("bigscience/bloom-560m").cuda()
 model.eval()
 
 def gen_res(model, tokenizer, ipstr):
@@ -44,6 +46,7 @@ with open("./data/dev.json", 'r') as fp, open("./generate.txt", 'a') as wp:
         print(info)
         print(res_text)
         info['res'] = res_text
-        info['version'] = "bloom-2200-sft"
+        # info['version'] = "bloom-2200-sft"
+        info['version'] = "raw"
         wp.write(json.dumps(info))
         

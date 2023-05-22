@@ -85,12 +85,12 @@ def train_or_pred(
         output_dir=args.output_dir,
         evaluation_strategy = "steps",
         learning_rate=args.learning_rate,
-        per_device_train_batch_size=2,
-        per_device_eval_batch_size=2,
+        per_device_train_batch_size=8,
+        per_device_eval_batch_size=8,
         num_train_epochs=args.num_epochs,
         weight_decay=0.01,
         push_to_hub=False,
-        logging_dir="./logs_test",
+        logging_dir="./logs_test_2",
         logging_steps=10,
         load_best_model_at_end=True,
         metric_for_best_model="loss",
@@ -139,9 +139,9 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", default="./outputs/sft")
     parser.add_argument("--max_seq_length", default=512, type=int)
     parser.add_argument("--max_length", default=512, type=int)
-    parser.add_argument("--num_epochs", default=2, type=int)
-    parser.add_argument("--batch_size", default=4, type=int)
-    parser.add_argument("--learning_rate", default=2e-5, type=float)
+    parser.add_argument("--num_epochs", default=1, type=int)
+    parser.add_argument("--batch_size", default=8, type=int)
+    parser.add_argument("--learning_rate", default=1e-6, type=float)
     parser.add_argument("--resume_from_checkpoint", action="store_true", default=False)
     args = parser.parse_args()
     train_or_pred()
