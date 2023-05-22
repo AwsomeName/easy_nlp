@@ -2,7 +2,7 @@ from transformers import BloomTokenizerFast, BloomForCausalLM, pipeline
 import torch
 import json
 
-model_path = "/root/easy_nlp/trl/outputs/sft/checkpoint-2600"
+model_path = "/root/easy_nlp/trl/outputs/sft/checkpoint-100"
 # tokenizer = BloomTokenizerFast.from_pretrained(model_path)
 tokenizer = BloomTokenizerFast.from_pretrained("bigscience/bloom-560m")
 tokenizer.pad_token = tokenizer.eos_token
@@ -48,5 +48,5 @@ with open("./data/dev.json", 'r') as fp, open("./generate.txt", 'a') as wp:
         info['res'] = res_text
         # info['version'] = "bloom-2200-sft"
         info['version'] = "raw"
-        wp.write(json.dumps(info))
+        wp.write(json.dumps(info) + "\n")
         
