@@ -1,0 +1,14 @@
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://172.17.0.6:11133
+  External URL: http://36.134.146.17:11133
+
+'HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /bigcode/starcoder/resolve/main/config.json (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f91163663a0>, 'Connection to huggingface.co timed out. (connect timeout=10)'))' thrown while requesting HEAD https://huggingface.co/bigcode/starcoder/resolve/main/config.json
+Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s]Loading checkpoint shards:  14%|█▍        | 1/7 [00:55<05:33, 55.61s/it]Loading checkpoint shards:  29%|██▊       | 2/7 [01:54<04:48, 57.75s/it]Loading checkpoint shards:  43%|████▎     | 3/7 [02:51<03:49, 57.40s/it]Loading checkpoint shards:  57%|█████▋    | 4/7 [03:54<02:58, 59.60s/it]Loading checkpoint shards:  71%|███████▏  | 5/7 [05:06<02:07, 63.91s/it]Loading checkpoint shards:  86%|████████▌ | 6/7 [06:13<01:05, 65.04s/it]Loading checkpoint shards: 100%|██████████| 7/7 [06:36<00:00, 51.28s/it]Loading checkpoint shards: 100%|██████████| 7/7 [06:36<00:00, 56.65s/it]
+Some weights of the model checkpoint at bigcode/starcoder were not used when initializing GPTBigCodeModel: ['lm_head.weight']
+- This IS expected if you are initializing GPTBigCodeModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing GPTBigCodeModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
