@@ -1,9 +1,10 @@
 from transformers import AutoTokenizer, AutoModel, AutoModelForCausalLM
 
-model_name = "bigcode/starcoder"
+# model_name = "bigcode/starcoder"
 # model_name = "THUDM/chatglm-6b"
+model_name = "HuggingFaceH4/starchat-alpha"
 
-model_path = "/root/data/starcoder"
+model_path = "/root/data/starchat"
 
 #用 AutoModel.from_pretrained() 下载模型
 

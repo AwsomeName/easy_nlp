@@ -122,7 +122,6 @@ def predict(input, max_length, top_p, temperature, history=None):
                         top_p=0.95,
                         num_beams = 3,
                         repetition_penalty = 2.0,
-                        temperature=0.2,
                         # temperature=temperature,
                         num_return_sequences=1)
                 # outputs = model.generate(inputs)
