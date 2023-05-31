@@ -20,12 +20,14 @@ st.set_page_config(
 @st.cache_resource
 def get_model():
     logger.info("get tokenizer...")
-    tokenizer = AutoTokenizer.from_pretrained("/root/data/starcoder", trust_remote_code=True, use_auth_token=acc_token, padding_side="left")
+    # tokenizer = AutoTokenizer.from_pretrained("/root/data/starcoder", trust_remote_code=True, use_auth_token=acc_token, padding_side="left")
+    tokenizer = AutoTokenizer.from_pretrained("/root/data/starchat", trust_remote_code=True, use_auth_token=acc_token, padding_side="left")
     tokenizer.pad_token = tokenizer.eos_token
     # tokenizer = AutoTokenizer.from_pretrained("bigcode/starcoder", trust_remote_code=True, use_auth_token=acc_token)
     # tokenizer = AutoTokenizer.from_pretrained("/root/easy_nlp/trl/model/bloom-560", trust_remote_code=True, use_auth_token=acc_token)
     logger.info("get model...")
-    model = AutoModelForCausalLM.from_pretrained("/root/data/starcoder", trust_remote_code=True, use_auth_token=acc_token).half().cuda()
+    # model = AutoModelForCausalLM.from_pretrained("/root/data/starcoder", trust_remote_code=True, use_auth_token=acc_token).half().cuda()
+    model = AutoModelForCausalLM.from_pretrained("/root/data/starchat", trust_remote_code=True, use_auth_token=acc_token).half().cuda()
     # model = AutoModelForCausalLM.from_pretrained("bigcode/starcoder", trust_remote_code=True, use_auth_token=acc_token).half().cuda()
     # model = AutoModelForCausalLM.from_pretrained("/root/easy_nlp/trl/model/bloom-560", trust_remote_code=True, use_auth_token=acc_token).half().cuda()
     model = model.eval()
@@ -44,11 +46,17 @@ MAX_BOXES = MAX_TURNS * 2
 #             scores[..., 5] = 5e4
 #         return scores
 
+system_token = "<|system|>"
+user_token = "<|user|>"
+assistant_token = "<|assistant|>"
+end_token = "<|end|>"
 
+system_msg = "Below is a dialogue between a human and an AI assistant called StarChat."
+    
 
 def predict(input, max_length, top_p, temperature, history=None):
     tokenizer, model, streamer = get_model()
-    stop_token_ids = [tokenizer.eos_token_id]
+    stop_token_ids = [tokenizer.eos_token_id, tokenizer(end_token)["input_ids"][0], tokenizer(user_token)["input_ids"][0]]
     class StopOnTokens(StoppingCriteria):
         def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
             for stop_id in stop_token_ids:
@@ -103,6 +111,14 @@ def predict(input, max_length, top_p, temperature, history=None):
                     generated_text += new_text
                     st.write(generated_text)
             else:
+                system_msg = "Below are a series of dialogues between various people and an AI assistant.\
+The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.\
+The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.\
+It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.\
+That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.\
+-----\n"
+                input = system_token + "\n" + system_msg + end_token + "\n" + user_token + "\n" + input + end_token + "\n" + assistant_token + "\n"
+                stop = StopOnTokens() 
                 chosen_token = tokenizer(
                     input,
                     # max_length=max_length,
@@ -122,12 +138,15 @@ def predict(input, max_length, top_p, temperature, history=None):
                         top_p=0.95,
                         num_beams = 3,
                         repetition_penalty = 2.0,
-                        temperature=0.2,
+                        # temperature=0.2,
                         # temperature=temperature,
-                        num_return_sequences=1)
+                        num_return_sequences=1,
+                        stopping_criteria=StoppingCriteriaList([stop]))
                 # outputs = model.generate(inputs)
                 response = tokenizer.decode(outputs[0])    
                 response = response.replace("<|endoftext|>", "")
+                response = response.replace("<|end|>", "")
+                response = response.split("<|assistant|>")[-1]
                 st.write(response)
 
     return history
@@ -141,14 +160,14 @@ prompt_text = st.text_area(label="用户命令输入",
             placeholder="请在这儿输入您的命令")
 
 do_sample = st.sidebar.slider(
-    "do_sample", 0, 1, 1, step=1
+    "do_sample", 0, 1, 0, step=1
 )
 
 max_length = st.sidebar.slider(
     'max_length', 0, 4096, 256, step=1
 )
 top_p = st.sidebar.slider(
-    'top_p', 0.0, 1.0, 0.9, step=0.01
+    'top_p', 0.0, 1.0, 0.95, step=0.01
 )
 temperature = st.sidebar.slider(
     'temperature', 0.0, 1.0, 0.2, step=0.01
