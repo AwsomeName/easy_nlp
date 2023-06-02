@@ -2,22 +2,18 @@ from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
 import torch
 
-test_data = load_dataset("json", data_files="/root/data/data/openai_humaneval/HumanEval.jsonl")
-# test_data = load_dataset("json", data_files="/root/data/data/humaneval-x/data/python/data/humaneval.jsonl")
+# test_data = load_dataset("json", data_files="/root/data/data/openai_humaneval/HumanEval.jsonl")
+test_data = load_dataset("json", data_files="/root/data/data/humaneval-x/data/python/data/humaneval.jsonl")
 
 print(test_data)
 
-tok = AutoTokenizer.from_pretrained("/root/data/bloom", padding_side="left")
-# tok = AutoTokenizer.from_pretrained("/root/data/bloom-560m")
-# tok = AutoTokenizer.from_pretrained("/root/data/starchat", padding_side="left")
-# tokenizer.pad_token = tokenizer.eos_token
+# tok = AutoTokenizer.from_pretrained("/root/data/bloom")
+tok = AutoTokenizer.from_pretrained("/root/data/bloom-560m")
 tok.pad_token = tok.eos_token
 print("init tok done")
 
-model = AutoModelForCausalLM.from_pretrained("/root/data/bloom").cuda()
-# model = AutoModelForCausalLM.from_pretrained("/root/data/bloom-560m").cuda()
-# model = AutoModelForCausalLM.from_pretrained("/root/data/starchat").half().cuda()
-model = model.eval()
+# model = AutoModelForCausalLM.from_pretrained("/root/data/bloom").cuda()
+model = AutoModelForCausalLM.from_pretrained("/root/data/bloom-560m").cuda()
 print("init model done")
 
 max_length = 2048
@@ -65,8 +61,8 @@ def gen_code(model, tok, prompt):
 
 train_data = test_data['train']
 
-with open("./test_problem_top6_b3b.txt", 'w') as wp:
-    for idx, data in enumerate(train_data):
+with open("./test_result_blm.txt", 'w') as wp:
+    for data in train_data:
         # print(data)
         # for d in data:
             # print("-----")
@@ -75,15 +71,12 @@ with open("./test_problem_top6_b3b.txt", 'w') as wp:
         prompt = "continue write the code below\n\n \"\"\"" + data['prompt'] + "\"\"\""
         code = gen_code(model, tok, prompt)
         print("-----------")
-        # print("prompt:", prompt)
-        print("prompt:", data['prompt'])
-        # print("[code]:", code)
-        print("[code]:", code.replace(prompt, ""))
+        print("prompt:", prompt)
+        print("[code]:", code)
+        # print("[code]:", code.replace(prompt, ""))
         print("ans: \n", data['canonical_solution'])
-        print("example_test:", data['test'])
+        print("example_test:", data['example_test'])
         wp.write(code + "\n")
-        if idx > 6:
-            break
         # break
 
 

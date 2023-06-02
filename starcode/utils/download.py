@@ -5,8 +5,9 @@ from transformers import BloomTokenizerFast
 # model_name = "THUDM/chatglm-6b"
 model_name = "HuggingFaceH4/starchat-alpha"
 model_name = "bigscience/bloom-3b"
+model_name = "bigscience/bloom-560m"
 
-model_path = "/root/data/bloom"
+model_path = "/root/data/bloom-560m"
 
 #用 AutoModel.from_pretrained() 下载模型
 
