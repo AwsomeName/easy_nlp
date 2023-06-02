@@ -65,14 +65,26 @@ def gen_code(model, tok, prompt):
 
 train_data = test_data['train']
 
-with open("./test_problem_top6_b3b.txt", 'w') as wp:
+system_token = "<|system|>"
+user_token = "<|user|>"
+assistant_token = "<|assistant|>"
+end_token = "<|end|>"
+
+with open("./test_problem_top6_b3_prompt.txt", 'w') as wp:
     for idx, data in enumerate(train_data):
         # print(data)
         # for d in data:
             # print("-----")
             # print(d)
             # print(data[d])
-        prompt = "continue write the code below\n\n \"\"\"" + data['prompt'] + "\"\"\""
+        system_msg = "Below are a series of dialogues between various people and an AI assistant.\
+The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.\
+The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.\
+It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.\
+That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.\
+-----\n"
+        prompt = system_token + "\n" + system_msg + end_token + "\n" + user_token + "\n" + data['prompt'] + end_token + "\n" + assistant_token + "\n"
+        # prompt = "continue write the code below\n\n \"\"\"" + data['prompt'] + "\"\"\""
         code = gen_code(model, tok, prompt)
         print("-----------")
         # print("prompt:", prompt)
