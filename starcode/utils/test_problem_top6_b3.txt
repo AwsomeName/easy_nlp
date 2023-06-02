@@ -1,0 +1,372 @@
+continue write the code below
+
+ """from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+""" from typing import List
+
+    def _has_close_elem(num1: int, num2: int, thresh: float = 1e-6) -> bool:
+        return abs((num1 - num2).abs()) < thresh and \
+            not (num1 == num2 or num1 > num2)
+
+    # check for close elements between all pairs of values
+    closed_lists = [list(range(len(numbers))) + [numbers[0]] * len(numbers[1:]),
+                     sorted(zip(*sorted(numbers))[:-1])]  # sort by first element only
+    closed_lists[::2] += [[numbers[0]]]   # add last value as a closing one
+    closed_lists[:-1][::2] += [[numbers[-1]]]    # remove last value as an opening one
+    assert sum(closed_lists[0][1] <= closed_lists[0][0] for i in range(len(closed_lists[0])))) == len(
+        closed_lists[0])  # make sure that we have at least one pair with no closeness
+    assert sum(closed_lists[2][1] <= closed_lists[1][0] for i in range(len(closed_lists[2])))) == len(
+        closed_lists[2])
+
+
+if __name__ == "__main__":
+    pass
+
+continue write the code below
+
+ """from typing import List
+
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    """ Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
+    separate those group into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other
+    Ignore any spaces in the input string.
+    >>> separate_paren_groups('( ) (( )) (( )( ))')
+    ['()', '(())', '(()())']
+    """
+"""This program will take an input from user which contains several blocks of parenthesis separated by commas or semicolons.
+The output should be one block per line with all parens inside single brackets.
+
+For example:
+(1)
+(2)
+;((3))
+;;4)
+
+should become 
+['1', '2'];
+
+('3'; 4]')
+
+
+You can use Python 3 syntax for your inputs as well. 
+If you want to see how it works please check out my answer on SO here https://stackoverflow.com/a/2602861/159799 
+
+A:
+
+Python 2 - 27 bytes
+f=lambda x:x.split()
+f("( (  ) (   (  ( ) ))) ").strip().replace(";\n","").rpartition()
+
+Try it online!
+Explanation
+Using lambda instead of f makes the expression more readable since it's easier to read what you're doing when using lambdas than if you'd used f directly.  The first part splits x at ; characters so that we don't have extra whitespace between the two parts.  
+Then we're replacing every occurrence of ';\n' with '' because that's where our newline character ends up being inserted after splitting apart the text.  This means no newlines appear anywhere else in the resulting array.
+Finally, rpartition returns us just the individual elements of the original
+continue write the code below
+
+ """
+
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+"""
+
+    # If we have an odd length then use floor() to round up or down depending on whether it's even or not,
+    if len(str(number)) % 2 == 1:
+        return int(floor((float(number))) + .0)
+
+    else:
+        return str(int(round(number)))
+
+A:
+
+You could try this.
+import math as m
+from operator import mul
+
+# Get rid of leading zeros from numbers that are too large for Python's string formatting operations
+def trim_zeros(num):
+  try:
+      num = m.divmod(m.ceil(num), 10)
+      print "%d" % num[0]
+      return ""
+  except OverflowError:
+      pass
+
+  def get_digits(n):
+     digits = []
+
+     while n > 0:
+       digit = "0" * (len(digit) - len(n))
+       digits += [digit]
+
+       n -= digit[-1]
+
+   return digits 
+
+print "%f" % trim_zeros(10**9)
+print "%f" % trim_zeros(1000000000000)
+
+Output: 
+10000000000000
+10000080000000
+
+The above is based off your example inputs: 10000000000000 and 10000080000000.  The first one has no trailing zeroes so you don't need any trimming at all;
+continue write the code below
+
+ """from typing import List
+
+
+def below_zero(operations: List[int]) -> bool:
+    """ You're given a list of deposit and withdrawal operations on a bank account that starts with
+    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and
+    at that point function should return True. Otherwise it should return False.
+    >>> below_zero([1, 2, 3])
+    False
+    >>> below_zero([1, 2, -4, 5])
+    True
+    """
+"""
+import itertools as ilt
+import math as m
+
+
+
+class AccountBalance():
+
+    def __init__(
+        self,
+        initial_balance = 0,
+    ) -> None:
+        self.initial_balance = int(
+            initial_balance
+        )
+        self.balance_after_deposits_and_withdrawals = []
+
+        for operation in range(
+                len(
+                    iter(
+                        i + 1
+                        * (
+                            -math.log10(
+                            float(i)
+                        )
+                        / 10
+                        ),
+                        min=1
+                    )
+                )
+            ):
+            # check whether we have enough money left after all transactions are done.
+            amount_to_pay_for_operation = \
+                self.initial_balance - self.balance_after_deposits_and_withdrawals
+
+            if not above_zero(amount_to_pay_for_operation) or\
+                    amount_to_pay_for_operation < 0:
+
+                raise ValueError(
+                    "Account Balance cannot be negative"
+                )
+
+            self.balance_after_deposits_and_withdrawals += [operation]*2  # add two more items so total will always be even.
+            
+
+
+    @staticmethod
+    def is_account_in_positve_state() -> bool:
+        """ Check whether current state of an account can be considered positive.
+        :return: True when it's possible to make deposits without having less than one unit remaining,
+            otherwise false.
+
+        :rtype:
+continue write the code below
+
+ """from typing import List
+
+
+def mean_absolute_deviation(numbers: List[float]) -> float:
+    """ For a given list of input numbers, calculate Mean Absolute Deviation
+    around the mean of this dataset.
+    Mean Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (mean in this case):
+    MAD = average | x - x_mean |
+    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])
+    1.0
+    """
+""" from numpy import median as med
+
+    def abs_diff(x1: float, x2: float) -> float:
+        return x1 - x2
+
+    # Calculate Median for all values to get an estimate on how far away they are
+    # from their respective means.  This will give us a good idea about where we should be looking at when calculating our deviation.
+
+    if len(numbers) != 2:  # If there aren't two points then just use the first point.
+        nums = [med(nums[::-1]), medians[0][0]] + [numbers[1:]]
+
+        print("Using 1st Point... ")
+        result1 = mean_abs_difference(nums[0])
+
+    else:   # Otherwise we'll need to do some sort of interpolation.
+
+        # First find out what percentile we're currently working with by dividing the number range into 100 equal parts,
+        # finding which value falls within that part, and taking its index.  Then divide it again so it's now divided up into 10 equally sized intervals.
+        pctiles = []
+        count = 0
+        while True:
+            i = int((count * .5))
+
+            # Find the current interval's start.
+            j = min(i, len(numbers))
+            k = max(j, (len(numbers)-1))
+
+            # Now add the new
+continue write the code below
+
+ """from typing import List
+
+
+def intersperse(numbers: List[int], delimeter: int) -> List[int]:
+    """ Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+    >>> intersperse([], 4)
+    []
+    >>> intersperse([1, 2, 3], 4)
+    [1, 4, 2, 4, 3]
+    """
+""" from typing import List
+
+    def _intersperse(l1: List[int], l2: List[int], n: int = 1) -> List[List[int]]:
+        if len(l2) != 0:
+            return [_Intersperse(i, j + n * (len(i1) - i), k) for i in l1
+                        for j in l2[:n] and k < len(i2)
+                        ]
+
+        else:
+            # If there is no overlap at all we can just append.
+            return [l1 + [n*len(l2):]
+                    for n in range(0, len(l2))]
+
+    print(_intersperse((range(10), 10)))
+    print(_intersperse((5, 7), (3, 5)))   # This one should be printed twice.
+    print(_intersperse((2.7182818235294117657843481359140625e-6, 3)),
+          (4.828427589995885726557538674909831728e-5))
+    print(_intersperse((-2147483649, -2147483648),
+                           (-1000000000000001, -1000000000))))  # Should not happen
+continue write the code below
+
+ """from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """
+"""
+
+    # First we need to split it into individual parts and then remove all empty strings from them.
+#    paren_groups = [part[1:] if part else '' for part in re.split(r'\s*\(([^\s]+?)\)\s+|\s*\(|\s*', paren_string)]
+
+    return list(map(
+        lambda x: int(x),
+        map(
+            lambda s: s,
+            filter(
+                None,
+                [x[0] for x in parse_nested_parens(
+                    '{} {}'
+                    .format(
+                        *parse_nested_parens(
+                            '{}{}'
+                                .format(
+                                    *re.findall(
+                                        r'\((?:[^\s]*(?:\s*[\w-_+%*\/=!@~`\'\\/]',
+                                        paren_groups[-1])),
+                                    )
+                                ).replace('\n', '\n' + ';\n'))
+                )
+            )
+        )
+    ))
+
+continue write the code below
+
+ """from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+    """
+""" from typing import Union
+
+    def _filter_strings(
+        string_list,
+        pattern: str = None
+    ) -> List[Union[str, int]]:
+        if not string:
+            return []
+
+        # If we have a regex then use it to find all matches.
+        if isinstance(pattern, (list, tuple)) and len(pattern) != 0:
+
+            match_regexes = [
+                re.compile(
+                    r"^%s$" % (re.escape(p),),
+                    flags=0,
+                    re.IGNORECASE
+                )
+                for p in pattern
+            )
+            ]
+
+            filtered_matches: Set[str]()
+            for s in string_list:
+
+                try:
+                    m = any(
+                        x is True
+                        for x in match_regexes
+                    )
+                    filtered_matches |= set(m)
+
+                except Exception as e:
+
+                    print(e)
+
+            return sorted(
+                [x for x in filtered_matches],
+                key=lambda x: x[0],
+            )
+
+    return _filter_strings()
+""" end function
+
+
+
+if __name__ == '__main__':
+    pass
+
