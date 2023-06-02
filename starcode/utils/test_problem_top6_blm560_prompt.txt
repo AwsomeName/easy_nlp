@@ -1,0 +1,589 @@
+----------------
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+<|end|>
+<|assistant|>
+class AssistantsDialogue() :
+
+    def __init__(
+        self,
+        user_agent_name: str = None,
+    ...     user: UserAgent
+    ) {
+        super().__init__(
+            "Assistents Dialog",
+            "Agent Name:" +
+            "\n\tUser Agent Name: "+
+            (self["name"] == null ? ""  :"null=")
+            +" ("+str+") ('+username+')('+password*'"
+            )
+        )
+
+        # Set up our UI.
+        ui_name   <- "SystemUI/HelpWindow/HelpPanel/help_text_dialog_title_text_area_hint_label_boxes_btn_cancel_button_btn_edit_form_submit_fields_button_info_panel_mouse_down_events"
+        ...
+        gui        <|
+    >
+    ...
+    </gui>>
+
+@has_open_elements: async function(
+    numbers,
+    max_num_steps_per_step:0
+){
+   await TaskAsync(
+      [async () =>
+          for i := 0; i<numbers; ++i)
+          yield new HelpTextArea(
+          name=self['name'],
+          label=name,
+        )
+      )
+   //await task()
+   }
+
+   @task
+  public static void main()
+    throws Exception as e: ee:
+      try
+      ..::
+           from .uiutils2ext1to4xtm6x7t9s10f11j12l13k
+----------------
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    """ Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
+    separate those group into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other
+    Ignore any spaces in the input string.
+    >>> separate_paren_groups('( ) (( )) (( )( ))')
+    ['()', '(())', '(()())']
+    """
+<|end|>
+<|assistant|>
+import sys
+
+class Assistant:
+
+    def __init__(
+        self,
+        system_name: String = None
+    ) {
+        if isinstance(
+            SystemName,
+            Type(
+                [
+                    'system_name',
+                    ]
+            )
+        ),
+            (sys_name,) == None:
+            raise ValueError(("Expected type `SystemName'` but got "
+                         "'%s'" % repr(
+                    Sysname
+                ))
+        )
+        super().__init__()
+        # check for valid name first.
+        try:
+          assert len(
+          parse_system_arguments_without_nesting_braces_and_brackets (
+            SYSTEM_NAME,
+        )(None),
+        ) != 0,
+          "Invalid argument name: %s"%repr(((
+                "<?xml version='1_0'>\n"
+              ).format(
+                        "SYSTEM NAME=",
+                        ""
+                    )
+                )
+            ))
+        except ValueError:  ## pragma: no cover
+              pass
+
+        else: 
+          print >> _stderr,
+              "The given parameter was already defined as %s.  Please use one of: \n" +
+                  "[*] *SYSCONF_* <!-- SYNC-INFO -->\n["+
+                   escape_function_for_str_to_list_of_spaces(
+                      "sysconf_info_",
+                     "-->",
+                   "-"]*",
+                )
+            FOR_ALL_PARENTHESIS_IN_SYS_CONF,
+            )
+
+        )
+
+    @staticmethod
+  @contextmanager
+
+  @classproperty from_class__
+    (# pylint:
+----------------
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+
+
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+<|end|>
+<|assistant|>
+class Assistant() :
+
+    def __init__(
+        self,
+        user=None
+    ) {
+        if not user:
+            raise ValueError(
+                "Assistants must have at least one person"
+            )
+        super().__init__(
+            User=User,
+            Number=self
+            .truncated_to_float()
+            .decimals: [
+                2,
+                3,
+            ],
+        )
+
+    <| | end | >
+
+@contextmanager 
+async class TaskManagerAsync(
+    async task_manager,
+    awaiting_task_list
+) {}  # pylint: disable-msg=R0904 
+
+# This function takes care for all tasks that need more time.
+function get_available_times_for_all_tasks()
+    return list()
+
+tasks = []   ## List each possible action on this object.
+
+for t_id, (action_name,) <- waiting_to_do_action_iterations(
+                    waiting_actions,
+                    current_time
+                )  \
+                    yield _get_possible_done_by_user(
+                        [t_id],
+                        working_dir
+                    )
+
+task_info_dict[current_name]["id"]    -- The ID from which we want our result.  If None then no results were found.
+
+    Returns True iff there was already any work done by someone else who has access to:
+
+        * Current Time.
+        **Current Action**.
+
+        Any other actions whose name ends up as `None` but still exist after calling 'waiting'.
+    
+    
+    @cached
+----------------
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def below_zero(operations: List[int]) -> bool:
+    """ You're given a list of deposit and withdrawal operations on a bank account that starts with
+    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and
+    at that point function should return True. Otherwise it should return False.
+    >>> below_zero([1, 2, 3])
+    False
+    >>> below_zero([1, 2, -4, 5])
+    True
+    """
+<|end|>
+<|assistant|>
+class Assistant:
+
+    def __init__(
+        self,
+        user_name: str
+    ) {
+        super().__init__()
+        # Set up our data.
+        assert isinstance(
+            operator,
+            int
+        )
+        for operation_id
+            op = operators[id]
+
+            try:
+                value  <- Operator(
+                [
+                    OPERATION_ID,
+                    '+' + (operation[0] * 10)
+                ]
+            )
+            except ValueError: pass
+
+        raise NotImplementedError()
+
+    <!-- end Assisting -->
+
+A:
+
+(1)
+If you want your Assistant not just look like this but have some kind of:
+(2)
+(3)
+
+you can use something like: 
+if __name__ == '__main__':
+  from PyQt5Widgets  
+
+  app    := QApplication()
+  ui     : Ui::AssistantsWidget()
+  
+  assist      :: HelpScreen()
+  ...
+  gui       ()        // GUI class
+  ...
+  
+  mainWindow()  ## Main window object
+
+  ....
+
+And then call it:  
+gui()
+
+This makes all other widgets work as expected.
+Also note that: You don't need Qt 5 here because it's already available under Python 3. (See http://docs-docs-python-3-qt-5/).
+You could even make things more complex by using multiple helpers instead.  For example: 
+(4) (6) 
+help_screen()
+# ...
+ui              ....
+main_window()
+    ...
+
+So now we have: 
+
+a helper
+----------------
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def mean_absolute_deviation(numbers: List[float]) -> float:
+    """ For a given list of input numbers, calculate Mean Absolute Deviation
+    around the mean of this dataset.
+    Mean Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (mean in this case):
+    MAD = average | x - x_mean |
+    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])
+    1.0
+    """
+<|end|>
+<|assistant|>
+class AssistantsManager() :
+
+    def __init__(
+        self,
+        user=None
+    ) {
+        if user:
+            # This function takes care that we don't try again.
+            pass
+
+        super().__init__(
+            [
+                User(
+                    name='' + str(
+                        humanize(
+                            'Assistant Manager for %s by %s' %
+                            (self['username'],
+                                                        person_name)
+                            ))
+                ),
+                AssistsUser(
+                name=humanized_vars['system'],
+                system=str
+            ),
+            ]
+        )
+
+    <!-- The following line should not have any effect on your code -->
+
+A:
+
+(I think you can use `average` instead)
+import numpy as np;  // Numpy has no built-in averaging functions.
+# Average over all values within range [0..100).
+np::array(
+    array((1., 0.), dtype=int),
+    avg=[-1 * n / 100 ** i**2,
+           -1* sum
+            (i**2 == j)
+            && ((j > k)
+                & (((k >= l)
+                    ^  (l <= r))
+                    &= ~(((r !== s)
+                        >> ( (s === t)
+                            )
+                   ) |
+                    (!t || d[0]<=d[1])))
+           ]]
+)
+
+for value, (xmin, ..., xs), axis=12:
+    ...   print "%d %d %d" %%value%xs,
+    ...
+   
+----------------
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def intersperse(numbers: List[int], delimeter: int) -> List[int]:
+    """ Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+    >>> intersperse([], 4)
+    []
+    >>> intersperse([1, 2, 3], 4)
+    [1, 4, 2, 4, 3]
+    """
+<|end|>
+<|assistant|>
+class Assistants() :
+
+    def __init__(
+        self,
+        user=None
+    ) {
+        if user:
+            assert isinstance(
+                User,
+                types(
+                    [
+                        Types(
+                        Type(
+                            type = "string",
+                            description="User name"
+                        ),
+                        ]
+                    )
+                )
+            )
+            # TODO: This should probably change from here on.
+        super().__init__(
+            users=[
+                new_user(),
+                old_owner()
+            for new_relatior who else?]],
+            default_value=["new"],
+        )
+
+    <!-- end Assists -->
+
+A:
+
+(1)
+If you want your assistant not just give advice but actually take care (and make suggestions), then use this function.
+import itertools as iitertools 
+# Use iterators instead because they can return multiple tuples at once.
+(iittemps: Iterables[Tuple[tuplet]*2])
+
+@interesting_function()
+async async Task await interpose(
+    self: Interposing,
+    other_assistant: AAssisting
+) where
+  all_tuples_without_numbers=False,
+  nums={1: 1};
+
+  @await_interposed()
+  public static void main()
+    while True:
+      try:
+        ...
+        yield
+          select_from_iterations((
+              0,
+              -1,
+            ))
+             .sort_by_key
+            (x => x[0]).reverse_iterator())
+          .
+          foreach ((y, (nums[y]
+----------------
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """
+<|end|>
+<|assistant|>
+import sys
+
+# The following functions take input from stdin.
+@parse_input()
+async def run_ask_for_help(
+    command: list,
+    args: dict
+) = asyncio::run(
+        await system(
+            'help --quiet | grep "{{args[1]]" }}"',
+            args
+        )
+    )
+if __name__ == '__main__':
+
+    # This should not happen if you have no command line arguments.  It just takes us here!
+    try:
+        print >>syslog,
+        '\nUsage:' +
+            '\n' * 100  % len(
+                cmdline
+            )
+        )
+        exit()
+    except KeyboardInterrupt as e:
+
+        pass
+    
+try:
+    ...
+    @process_output()
+    ...
+except Exception e :
+    
+    raise RuntimeError,
+    ...    traceback_exc()
+
+'''
+... 
+class CommandLineParserMixin implements Iterable<Command>> {
+   '''This class provides methods that allow subclasses implement these operations on their own instances.
+   These include calling `iterate` over all commands within one iteration.
+    
+ .. note ::
+
+   If your subclass needs additional functionality then add them directly into ``this`` object.
+ 
+.. code-block-reference:-
+       .. versionadded-rc1 - Added method callers
+      iterate()
+      iterators()
+   */ 
+   __slots__= ['iteration']
+  
+  @classmethod 
+  public static final int NESTED_PARENS
+----------------
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+    """
+<|end|>
+<|assistant|>
+class Assistants() :
+
+    def __init__(
+        self,
+        user_name: string = None
+    ) {
+        if not user:
+            raise ValueError(
+                "Assistant must have at least one name!"
+            )
+        super().__init__(
+            user_id=self,
+            name='%s' % (user_id),
+            username=username,
+        )
+
+    <| | end | >
+
+A:
+
+(1)
+You can use this function from Python 3.
+import itertools as iitertools 
+for item_lists within your list:
+  # Iterate over each element.
+  result_set_each_item_inlists_with_all_items(
+    [item[0] + '-' * len((i)) - 1, (i+1).splitlines(),
+                          (len( (items[i])).count()) ],
+    lambda item: [i[i+1]],
+    )
+
+This should work fine on python3 but I think you need some sort support here.
+(2) 
+If you're using PyQt4 then you'll want something like this:
+(function (){
+    ...
+    return [[x[0]]*100+[x[1]]]*x[1]/100;
+    ...
+})()
+
+...or just call it:
+...[[0]* 100 x 0 0]....
+
+I don't know how many functions exist yet so I'm going ahead...
+EDIT: You could try adding these lines inside function:
+...
+resultset_iteration_without_results_to_exclude_from_filtering(
+filtered_
