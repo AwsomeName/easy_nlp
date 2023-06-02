@@ -1,0 +1,483 @@
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+<|end|>
+<|assistant|>
+import numpy as np
+
+class Assistant():
+
+    def __init__(
+        self,
+        name: str = 'Assistants',
+    ) -> None:
+        # Set name for this class.
+        self.name = name
+
+        # Create some helper functions that we can use later on.
+
+        # Get all possible values from input range (inclusive).
+        self.values_from_range = [
+            x + y * step / max_step,
+            min_value - 1e-10 * step / max_step,
+         ]
+
+        # Calculate distance between every pair of elements.
+        self.distance_matrix = {
+            (x, y: int) : abs((y - x) ** 2),
+
+            # Distance matrix.
+            }
+
+        # Initialize random number generator used by the algorithm.
+        self.random_generator = Random()
+
+    <|start|>
+    def run_algorithm(self) -> float:
+        """ Run the main loop until there aren't more steps left.
+
+        .. note:: This function should not return before calling `stop`.
+        ... It may take several seconds depending on how many inputs you have!
+
+        .. warning:: The order of operations here matters;
+          please make sure they match up correctly.
+          First call ``run`` then pass your data into the next method,
+          which calls another one.  Then finally stop().
+        ...
+
+        :return: None
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def separate_paren_groups(paren_string: str) -> List[str]:
+    """ Input to this function is a string containing multiple groups of nested parentheses. Your goal is to
+    separate those group into separate strings and return the list of those.
+    Separate groups are balanced (each open brace is properly closed) and not nested within each other
+    Ignore any spaces in the input string.
+    >>> separate_paren_groups('( ) (( )) (( )( ))')
+    ['()', '(())', '(()())']
+    """
+<|end|>
+<|assistant|>
+import re
+
+@asyncio.coroutine
+def handle_question(
+    question: str,
+    answer: str,
+) -> None:
+
+    # Split question at space characters only if there aren't more than 2 consecutive ones
+    split_at_space = False
+    for char in question[:-1]:
+        if len(char) != 1:
+            break
+
+        elif char == " ":
+
+            # If we have reached here then we've found two consecutive whitespace chars,
+            # so we're going to stop splitting now.
+            split_at_space = True
+            continue
+
+        else:
+            split_at_space = False
+
+    # Now that all our splits were done, let's see how many questions had been asked before us...
+    num_of_questions_attempted = 0
+    while True:
+        try:
+            yield from asyncio.wait_for(
+                lambda :
+                await ask_user(
+                    question,
+                    [answer],
+                )
+            )
+        except Exception as e:  # pylint: disable=bare-except
+            print("Error: {}".format(e))
+            raise e
+        except:
+            pass
+
+        if num_of_questions_attempted >= 3:
+            break
+
+        num_of_questions_attempted += 1
+
+
+
+if __name__ == '__main__':
+    main()
+
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+
+
+def truncate_number(number: float) -> float:
+    """ Given a positive floating point number, it can be decomposed into
+    and integer part (largest integer smaller than given number) and decimals
+    (leftover part always smaller than 1).
+
+    Return the decimal part of the number.
+    >>> truncate_number(3.5)
+    0.5
+    """
+<|end|>
+<|assistant|>
+<|start|>
+
+A:
+
+I think you could use this code for your purpose.
+import numpy as np
+from scipy import stats
+
+# Get data from input file
+data = [float(x) for x in open('data').readlines()]
+
+# Create array that contains all numbers less then 10^6
+array_lower_than_10_6 = np.where((np.isinf(x)) & ((x < 10000000)))
+print len(array_lower_than_10_6)
+
+# Calculate mean value per group 
+mean_array_lower_than_10_6 = sum([stats.norm.mu(x - y) / n for x,y in zip(array_lower_than_10_6[:-1], array_lower_than_10_6[1:]) if not np.isnan(n)])
+print 'Means:',
+for i, (value1, value2) in enumerate(zip(mean_array_lower_than_10_6[0], mean_array_lower_than_10_6[1])):
+  print '{0:8d} {1:8d}'.format(i + 2, value1), \
+        "{2:8d} {3:8d}".format(i + 3, value2
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def below_zero(operations: List[int]) -> bool:
+    """ You're given a list of deposit and withdrawal operations on a bank account that starts with
+    zero balance. Your task is to detect if at any point the balance of account fallls below zero, and
+    at that point function should return True. Otherwise it should return False.
+    >>> below_zero([1, 2, 3])
+    False
+    >>> below_zero([1, 2, -4, 5])
+    True
+    """
+<|end|>
+<|assistant|>
+import operator
+
+@operator()
+def is_negative(amounts: List[float]) -> bool:
+    for amount in amounts[:-1]:
+        if not (isinstance(amounts[0], (list)) and all(
+                isinstance(
+                    sum(
+                        [
+                            -amount,
+                            0
+                        ],
+                        axis=0
+                    ),
+                    float
+                )
+            )
+        ):
+            continue
+
+        # If we have negative numbers before us then this operation must be positive.
+        if len(amounts[1:-1]) != 1:  # This can happen because some operators don't handle lists.
+            raise ValueError()
+
+        try:
+            total = sums((
+                operand,
+                operand
+            ), axis=1)
+        except TypeError:
+            pass
+        else:
+            if abs(total) < 0:
+                break
+
+    return False
+<|end|>
+<|dialogue 1|>
+Hello! I'm your new friend.
+I am here to make you feel better.
+
+How would I tell my friends how they could improve their lives?
+
+My first suggestion is:
+
+Use more money!
+Buy yourself something nice!
+
+But that's just one option out there... You might want to try another one:
+
+Get rid of debt!
+Pay off credit cards!
+Save up enough money so you'll never need to borrow again...
+Make small changes every day...
+
+You may think it's silly but I've been doing these things
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def mean_absolute_deviation(numbers: List[float]) -> float:
+    """ For a given list of input numbers, calculate Mean Absolute Deviation
+    around the mean of this dataset.
+    Mean Absolute Deviation is the average absolute difference between each
+    element and a centerpoint (mean in this case):
+    MAD = average | x - x_mean |
+    >>> mean_absolute_deviation([1.0, 2.0, 3.0, 4.0])
+    1.0
+    """
+<|end|>
+<|assistant|>
+import numpy as np
+
+@app.route('/meandiff')
+def meandef():
+
+    # Get some data from your database...
+    nums = [
+        'John Doe',
+        'Jane Smith',
+    ]
+    print(nums[0])
+
+    return jsonify(
+        {
+            'success': True,
+            'data': [],
+        }
+    )
+
+
+@app.route('/')
+def index():
+    return render_template('simple/index.html')
+
+if __name__ == '__main__':
+    app.run()
+
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def intersperse(numbers: List[int], delimeter: int) -> List[int]:
+    """ Insert a number 'delimeter' between every two consecutive elements of input list `numbers'
+    >>> intersperse([], 4)
+    []
+    >>> intersperse([1, 2, 3], 4)
+    [1, 4, 2, 4, 3]
+    """
+<|end|>
+<|assistant|>
+import sys
+
+class Assistant():
+
+    def __init__(
+        self,
+        name: str = None,
+    ) -> None:
+        if name == "":
+            print(
+                "You must specify your own name"
+            )
+            return
+
+        # Set up some variables that we'll use throughout this program.
+        self.name = name
+        self.questions = [""]*10  # 10 questions for each user.
+
+        # Create our main loop.  This runs forever until we give up on trying to solve problems.
+    <|loop|>
+    while True:
+        try:
+
+            # Ask one question from the current user.
+            ask_user_question()
+            break
+
+        except KeyboardInterrupt as e:
+            pass
+
+
+    <|ask_user_question|>
+    def ask_user_question(
+            self,
+            prompt: str="What would you like me to say?",
+        ) -> None:
+        """Ask a single-choice question from the currently logged-in user"""
+        print(prompt)
+        choice = raw_input().lower()
+        if not choice in ["yes", "no", "none"]:
+            raise ValueError()
+
+        else:
+            self.questions[self.current_index + 1] += choice
+
+    <|end|>
+
+
+
+if __name__ == '__main__':
+    app_name = os.path.basename(sys.argv[0])
+
+    assistant = Assistant()
+    assistant.name = "Steve
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def parse_nested_parens(paren_string: str) -> List[int]:
+    """ Input to this function is a string represented multiple groups for nested parentheses separated by spaces.
+    For each of the group, output the deepest level of nesting of parentheses.
+    E.g. (()()) has maximum two levels of nesting while ((())) has three.
+
+    >>> parse_nested_parens('(()()) ((())) () ((())()())')
+    [2, 3, 1, 3]
+    """
+<|end|>
+<|assistant|>
+import re
+
+class Assistant:
+
+    def __init__(
+        self,
+        name: str = 'Assistants',
+    ) -> None:
+        self.name = name
+
+        # The list containing all possible questions that can be asked.
+        self.questions = [
+            {
+                "question": "What would you like?",
+                "type": "SimpleQuestionType",
+            },
+            {
+                "question": "How long have you been here?",
+                "type": "DurationQuestionType",
+            },
+            {
+                "question": "Who was your first boss?",
+                "type": "BossQuestionType",
+            },
+            {
+                "question": "Are there any other things you'd like me to know?",
+                "type": "MoreQuestionsType1",
+            },
+        ]
+
+
+    @asyncio.coroutine
+    async def ask_question(
+            self,
+            question: str,
+        ) -> int:
+        question_id = await self.get_next_question()
+
+        if not question_id: return -1
+
+        try:
+            response = yield from self.asking_someone_with_name(
+                question_id=question_id
+            )
+        except Exception as e:
+            print(e)
+            raise e
+
+
+        result_type = None
+        if type(response[0]) != list:
+            result_type = "ErrorResponseType"
+
+            message = "No valid responses were received!\n" + \
+                  "Please try again later...
+<|system|>
+Below are a series of dialogues between various people and an AI assistant.The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable.The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed.It also tries to avoid giving false or misleading information, and it caveats when it isn’t entirely sure about the right answer.That said, the assistant is practical and really does its best, and doesn’t let caution get too much in the way of being useful.-----
+<|end|>
+<|user|>
+from typing import List
+
+
+def filter_by_substring(strings: List[str], substring: str) -> List[str]:
+    """ Filter an input list of strings only for ones that contain given substring
+    >>> filter_by_substring([], 'a')
+    []
+    >>> filter_by_substring(['abc', 'bacd', 'cde', 'array'], 'a')
+    ['abc', 'bacd', 'array']
+    """
+<|end|>
+<|assistant|>
+from typing import Dict
+
+@property
+def name() -> str:
+    return "Assistant"
+
+
+class AssistantDialogue(object):
+
+    def __init__(
+        self,
+        name: str = None,
+    ) -> None:
+        if not isinstance(name, (list, tuple)):
+            raise TypeError(
+                "The type of 'name' must be either a string (or list/tuple),"
+                "a dict, or a callable object which returns such a value"
+            )
+        assert len(name) != 0
+
+        # The user has asked us to provide some assistance.
+        self.dialogue_type = "Dialogue"
+        self.subtitle = ""  #: Subtitle displayed on top of dialogue box.
+
+        # A dictionary containing all possible responses from our helper.
+        self.responses = {}   #: Dictionary mapping each question/answer pair.
+                                #: Each key represents a response option
+                                #: while values represent corresponding options.
+        self.answers = {"yes": True}    #: Mapping of answers to their respective keys.
+
+    @property
+    def title(self) -> str:
+        return self.subtitle + "[%s]" % self.name()
+
+    @property
+    def subtitle(self) -> str:
+        return self.title
+
+    @response.setter
+    def response(self, value:
