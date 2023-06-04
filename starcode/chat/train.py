@@ -30,7 +30,7 @@ import datasets
 import torch
 import transformers
 from config import DataArguments, ModelArguments, TrainingArguments
-from datasets import load_dataset
+from datasets import load_dataset, load_from_disk
 from dialogues import get_dialogue_template, mask_user_labels, prepare_dialogue
 from transformers import (AutoModelForCausalLM, AutoTokenizer, Trainer,
                           default_data_collator, set_seed)
@@ -104,7 +104,8 @@ def main():
     ###############
     # Load datasets
     ###############
-    raw_datasets = load_dataset(data_args.dataset_name)
+    # raw_datasets = load_dataset("/code/easy_nlp/starcode/chat/oasst1_en/data/")
+    raw_datasets = load_from_disk(data_args.dataset_name)
     logger.info(
         f"Training on the following datasets and their proportions: {[split + ' : ' + str(dset.num_rows) for split, dset in raw_datasets.items()]}"
     )
@@ -310,21 +311,23 @@ def main():
     kwargs = {"finetuned_from": model_args.model_name_or_path, "tasks": "text-generation"}
     if data_args.dataset_name is not None:
         kwargs["dataset_tags"] = data_args.dataset_name
-        if data_args.dataset_config_name is not None:
-            kwargs["dataset_args"] = data_args.dataset_config_name
-            kwargs["dataset"] = f"{data_args.dataset_name} {data_args.dataset_config_name}"
-        else:
-            kwargs["dataset"] = data_args.dataset_name
-            kwargs["dataset_args"] = "default"
+        # if data_args.dataset_config_name is not None:
+            # kwargs["dataset_args"] = data_args.dataset_config_name
+            # kwargs["dataset"] = f"{data_args.dataset_name} {data_args.dataset_config_name}"
+        # else:
+        kwargs["dataset"] = data_args.dataset_name
+        kwargs["dataset_args"] = "default"
 
     # Store dialogue template so we can load it at deployment time
     dialogue_template.save_pretrained(training_args.output_dir)
 
-    if training_args.push_to_hub:
-        trainer.push_to_hub(**kwargs)
-    else:
-        trainer.save_model(training_args.output_dir)
-        trainer.create_model_card(**kwargs)
+    # if training_args.push_to_hub:
+    #     trainer.push_to_hub(**kwargs)
+    # else:
+    trainer.save_model(training_args.output_dir)
+    trainer.create_model_card(**kwargs)
+    token = "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"
+    trainer.push_to_hub("spongbobliu/test_2", private=False, use_auth_token=token, create_pr=1)
 
     with training_args.main_process_first(desc="Generate a sample from the model"):
         inputs = tokenizer(
