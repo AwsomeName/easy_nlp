@@ -106,6 +106,7 @@ def main():
     ###############
     # raw_datasets = load_dataset("/code/easy_nlp/starcode/chat/oasst1_en/data/")
     raw_datasets = load_from_disk(data_args.dataset_name)
+    # raw_datasets = load_dataset(data_args.dataset_name)
     logger.info(
         f"Training on the following datasets and their proportions: {[split + ' : ' + str(dset.num_rows) for split, dset in raw_datasets.items()]}"
     )
