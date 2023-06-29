@@ -296,7 +296,7 @@ async def multilingual_code_fim(request: Request):
         end_token + "\n" + "Assistant: "
         # end_token + "\n" + assistant_token + "\n"
     code = gen_result(prompt, gc)
-    code = code[len(prompt)+1:]
+    code = code[len(prompt):]
     end = datetime.datetime.now()
     time = end.strftime("%Y-%m-%d %H:%M:%S")
 
@@ -322,8 +322,8 @@ async def multilingual_code_free(request: Request):
     print("----- code_free raw request:")
     json_post = json.dumps(json_post_raw)
     json_post_list = json.loads(json_post)
-    instruct = json_post_list.get('instruct')
-    context = json_post_list.get("context")
+    instruct = json_post_list.get('instruct', "")
+    context = json_post_list.get("context", "")
     history = json_post_list.get('history')
     max_length = json_post_list.get('max_length')
     top_p = json_post_list.get('top_p')
@@ -345,7 +345,7 @@ async def multilingual_code_free(request: Request):
         # end_token + "\n" + assistant_token + "\n"
 
     code = gen_result(prompt, gc)
-    code = code[len(prompt)+1:]
+    code = code[len(prompt):].split("\n\n\n\n")[0]
     end = datetime.datetime.now()
     time = end.strftime("%Y-%m-%d %H:%M:%S")
 
@@ -501,7 +501,7 @@ async def multilingual_code_debug(request: Request):
         # end_token + "\n" + assistant_token + "\n"
 
     code = gen_result(prompt, gc)
-    code = code[len(prompt)+1:].split("\n\n\n\n")[0]
+    code = code[len(prompt):].split("\n\n\n\n")[0]
     end = datetime.datetime.now()
     time = end.strftime("%Y-%m-%d %H:%M:%S")
 
