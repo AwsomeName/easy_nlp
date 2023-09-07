@@ -1,5 +1,10 @@
 tqdm==4.65.0
-transformers==4.28.1
-datasets==2.11.0
-huggingface-hub==0.13.4
-accelerate==0.18.0
+# transformers==4.28.1
+# datasets==2.11.0
+# huggingface-hub==0.13.4
+accelerate==0.20.3
+fastapi
+uvicorn
+git+https://github.com/huggingface/transformers.git@main
+# accelerate
+bitsandbytes

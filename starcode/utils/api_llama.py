@@ -9,6 +9,7 @@ DEVICE_ID = "0"
 CUDA_DEVICE = f"{DEVICE}:{DEVICE_ID}" if DEVICE_ID else DEVICE
 debug = True
 model_path = "/root/data/model"
+model_path = "/home/lc/models/codellama/CodeLlama-7b-Instruct-hf"
 def torch_gc():
     if torch.cuda.is_available():
         with torch.cuda.device(CUDA_DEVICE):
@@ -531,6 +532,7 @@ async def multilingual_history_continue(request: Request):
 if __name__ == '__main__':
     # tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     # model = AutoModelForCausalLM.from_pretrained(model_path, trust_remote_code=True).half().cuda()
-    model = AutoModelForCausalLM.from_pretrained(model_path).half().cuda()
+    # model = AutoModelForCausalLM.from_pretrained(model_path).half().cuda()
+    model = AutoModelForCausalLM.from_pretrained(model_path, torch_dtype=torch.float16).cuda()
     model.eval()
     uvicorn.run(app, host='0.0.0.0', port=11073, workers=1)

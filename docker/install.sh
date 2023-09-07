@@ -38,7 +38,8 @@ docker pull nvidia/cuda:12.1.0-devel-ubuntu18.04
 
 
 ## 测试docker GPU支持
-docker run --gpus all nvidia/cuda:11.4.0-base nvidia-smi
+# docker run --gpus all nvidia/cuda:11.4.0-base nvidia-smi
+docker run --gpus all nvidia/cuda:12.1.0-devel-ubuntu18.04 nvidia-smi
 # docker pull nvidia/cuda:12.1.0-devel-ubuntu18.04
 
 
