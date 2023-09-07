@@ -533,6 +533,7 @@ if __name__ == '__main__':
     # tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     # model = AutoModelForCausalLM.from_pretrained(model_path, trust_remote_code=True).half().cuda()
     # model = AutoModelForCausalLM.from_pretrained(model_path).half().cuda()
-    model = AutoModelForCausalLM.from_pretrained(model_path, torch_dtype=torch.float16).cuda()
+    # model = AutoModelForCausalLM.from_pretrained(model_path, torch_dtype=torch.float16).cuda()
+    model = AutoModelForCausalLM.from_pretrained(model_path, load_in_4bit=True)
     model.eval()
     uvicorn.run(app, host='0.0.0.0', port=11073, workers=1)
