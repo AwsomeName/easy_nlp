@@ -11,8 +11,7 @@ from glob import glob
 import os
 import re
 from transformers import AutoTokenizer, AutoModel
-import torch as t
-from transformers import AutoTokenizer, AutoModel
+# import torch as t
 import torch
 
 # 对文本进行拆分
@@ -168,7 +167,7 @@ class SentenceVector:
         inputs = self.tokenizer.batch_encode_plus(
             texts, padding=True, truncation=True, return_tensors="pt", max_length=64)
         inputs.to(device=self.device)
-        with t.no_grad():
+        with torch.no_grad():
             embeddings = self.model(**inputs)
 
         embeddings = embeddings.last_hidden_state[:, 0]
@@ -181,7 +180,7 @@ class SentenceVector:
         return embeddings
 
 
-class KnowLedge:
+class KnowLedge: 
     def __init__(self,
                  global_dir: str = None,
                  gen_model_name_or_path: str = "THUDM/chatglm-6b",
