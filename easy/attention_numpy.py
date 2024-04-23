@@ -3,7 +3,10 @@ import numpy as np
 
 def softmax(x):
     e_x = np.exp(x - np.max(x))
+    print("e:", e_x.shape)
+    print(np.sum(e_x, axis=-1, keepdims=True).shape)
     result = e_x / np.sum(e_x, axis=-1, keepdims=True)
+    print("r:", result.shape)
     return result
 
 def attention(x):
@@ -33,12 +36,17 @@ def multi_head_attention(x, head_n=16):
     q = np.reshape(q, (n, head_n, d // head_n))
     k = np.reshape(k, (n, head_n, d // head_n))
     v = np.reshape(v, (n, head_n, d // head_n))
+    print("q.shape:", q.shape)
     q = np.transpose(q, (1, 0, 2))  # head_n, n, d // head_n
     k = np.transpose(k, (1, 0, 2))
     v = np.transpose(v, (1, 0, 2))
+    print("q.shape:", q.shape, np.transpose(k, (0, 2, 1)).shape)
     A = q @ np.transpose(k, (0, 2, 1))
+    print("A.shape:", A.shape)
     A = A / np.sqrt(d // head_n)
+    print("A.shape:", A.shape)
     A_hat = softmax(A) # head_n, n, n
+    print("A.shape:", A.shape)
     output = A_hat @ v # head_n, n, d // head_n
     output = np.transpose(output, (1, 0, 2))    # n, head_n, d // head_n
     output = np.reshape(output, (n, d)) 
