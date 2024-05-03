@@ -1,1 +1,1 @@
-deepspeed --hostfile=./hostfile ./finetune.py  
+deepspeed --hostfile=./hostfile ./finetune.py --deepspeed=deepspeed_z3_config_bf16.json 
