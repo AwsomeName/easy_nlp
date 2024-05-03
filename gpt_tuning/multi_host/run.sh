@@ -1,0 +1,1 @@
+deepspeed --hostfile=./hostfile ./finetune.py  
