@@ -16,7 +16,7 @@ tools = [
         "type": "function",
         "function": {
             "name": "extract_navigation_location",
-            "description": "当用户提问意图试图导航到某地时，调用此工具",
+            "description": "当提到地点的时候，调用此工具",
             "parameters": {}  
         }
     }
@@ -32,7 +32,7 @@ def extract_navigation_location(question):
     """
             
     messages=[
-                {'role': 'system', 'content': 'prompt'},
+                {'role': 'system', 'content': prompt},
                 {'role': 'user', 'content': question}
             ]
     
@@ -60,10 +60,8 @@ def get_response_with_tools(messages):
 def call_with_messages(query):
     print('\n')
     messages = [
-            {
-                "content": input(query),  # 提问示例："现在几点了？" "一个小时后几点" "北京天气如何？"
-                "role": "user"
-            }
+        {'role': 'system', 'content': "你是一个有用的助手，当用户提到地点，那么使用工具"},
+        {"content": input(query), "role": "user"}
     ]
     print("-"*60)
     # 模型的第一轮调用
@@ -85,7 +83,7 @@ def call_with_messages(query):
             tool_info = {"name": "extract_navigation_location", "role":"tool"}
             # 提取位置参数信息
             # location = json.loads(assistant_output['tool_calls'][0]['function']['arguments'])['properties']['location']
-            tool_info['content'] = get_current_weather(query)
+            tool_info['content'] = extract_navigation_location(query)
        
         print(f"工具输出信息：{tool_info['content']}\n")
         print("-"*60)
@@ -93,5 +91,5 @@ def call_with_messages(query):
 
 
 if __name__ == '__main__':
-    call_with_messages("今天天气怎么样")
+    # call_with_messages("今天天气怎么样")
     call_with_messages("导航去北京")
