@@ -1,0 +1,18 @@
+sudo docker run --name llama_sft_v1 -it -d \
+        --shm-size=500g \
+        --privileged=true \
+        --device=/dev/davinci_manager \
+        --device=/dev/hisi_hdc \
+        --device=/dev/devmm_svm \
+        -v /usr/local/sbin:/usr/local/sbin \
+        -v /usr/local/dcmi:/usr/local/dcmi \
+        -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
+        -v /usr/local/Ascend/driver:/usr/local/Ascend/driver \
+        -v /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime \
+        -v /models/LoRA:/home/lora \
+        -v /models/:/home/models \
+        glm4_sft/ascend:v1 /bin/bash -c "sleep infinity"
+        # -v /root/images/cb/:/home/cb  \
+
+
+export PYTHONPATH=$PYTHONPATH:/home/cb/LLaMA-Factory/LLaMA-Factory/src
