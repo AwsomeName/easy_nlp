@@ -9,6 +9,9 @@ safetensors_path = "/hy-tmp/YJT2.5-0.5B-Instruct/model.safetensors"
 
 tensors_dict = load_file(from_path)
 
+for key in tensors_dict:
+    print("Key:", key)
+    # print(tensors_dict[key])
 
 # def convert_bin_to_safetensors(bin_path, safetensors_path):
 #     # 加载bin文件
